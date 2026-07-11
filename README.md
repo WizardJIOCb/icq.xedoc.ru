@@ -54,7 +54,7 @@ JWT_SECRET="длинная-случайная-строка" npm start
    docker compose up -d --build
    ```
 
-4. Получить сертификат Let's Encrypt и установить конфигурацию из `deploy/icq.xedoc.ru.nginx.conf` в `/etc/nginx/sites-enabled/`.
+4. Для первичного выпуска сертификата установить `deploy/icq.xedoc.ru.bootstrap.nginx.conf`, получить сертификат Let's Encrypt через webroot `/var/www/certbot`, затем заменить конфигурацию на `deploy/icq.xedoc.ru.nginx.conf`.
 5. Проверить и перезагрузить nginx: `nginx -t && systemctl reload nginx`.
 
 Данные пользователей и сообщений сохраняются в Docker volume `icq-data`. Для резервной копии достаточно архивировать этот volume.
