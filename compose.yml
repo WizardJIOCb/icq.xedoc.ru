@@ -1,0 +1,16 @@
+services:
+  icq:
+    build: .
+    container_name: icq-retro
+    restart: unless-stopped
+    environment:
+      PORT: 3000
+      JWT_SECRET: ${JWT_SECRET}
+      APP_ORIGIN: https://icq.xedoc.ru
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - icq-data:/app/data
+
+volumes:
+  icq-data:
