@@ -39,10 +39,11 @@ function api(path, options = {}, token) {
 }
 
 function Login({ onAuth }) {
+  const showDemo = import.meta.env.DEV;
   const [mode, setMode] = useState('login');
-  const [login, setLogin] = useState('12345678');
+  const [login, setLogin] = useState(showDemo ? '12345678' : '');
   const [name, setName] = useState('');
-  const [password, setPassword] = useState('icq2001');
+  const [password, setPassword] = useState(showDemo ? 'icq2001' : '');
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
@@ -91,7 +92,7 @@ function Login({ onAuth }) {
         </form>
         <div className="login-note">
           <StatusDot status="online" /> Сервер доступен
-          {mode === 'login' && <span>Демо: 12345678 / icq2001</span>}
+          {mode === 'login' && showDemo && <span>Демо: 12345678 / icq2001</span>}
         </div>
       </section>
       <p className="login-footer">ICQ Retro · icq.xedoc.ru</p>

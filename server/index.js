@@ -48,7 +48,9 @@ const makeUin = () => {
   return uin;
 };
 
-if (db.users.length === 0) {
+const shouldSeedDemo = process.env.SEED_DEMO === 'true' || process.env.NODE_ENV !== 'production';
+
+if (db.users.length === 0 && shouldSeedDemo) {
   const demoUsers = [
     { uin: '12345678', name: 'Аська', about: 'На связи с 2001 года' },
     { uin: '87654321', name: 'Старый друг', about: 'Верните мой 2007-й' },
